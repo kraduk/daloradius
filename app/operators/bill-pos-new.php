@@ -215,7 +215,7 @@
 
             // get next billing date
             if ($planRecurring == "Yes") {
-                $nextBillDate = getNextBillingDate($planRecurringBillingSchedule, $planRecurringPeriod);
+                $nextBillDate = getNextBillingDate($planRecurringPeriod, $planRecurringBillingSchedule);
             }
 
 
