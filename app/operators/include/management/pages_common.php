@@ -37,7 +37,7 @@ function createPassword($length, $chars) {
         $chars = "abcdefghijkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789";
     }
 
-    srand((double)microtime()*1000000);
+    srand((int)((float)microtime()*1000000));
     $i = 0;
     $pass = '';
 
