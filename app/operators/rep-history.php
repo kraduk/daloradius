@@ -147,7 +147,7 @@
 
             // escape row elements
             for ($i = 0; $i < $rowlen; $i++) {
-                $row[$i] = (!empty($row[$i])) ? htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8') : "(n/a)";
+                $row[$i] = (!empty($row[$i])) ? htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8') : "(n/a)";
             }
             
             // print table row

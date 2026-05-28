@@ -39,7 +39,7 @@
                   ? str_replace("%", "", trim($_POST['username'])) : "";
         $groupname = (array_key_exists('group', $_POST) && !empty(str_replace("%", "", trim($_POST['group']))))
                    ? str_replace("%", "", trim($_POST['group'])) : "";
-        $groupname_enc = (!empty($groupname)) ? htmlspecialchars($groupname, ENT_QUOTES, 'UTF-8') : "";
+        $groupname_enc = (!empty($groupname)) ? htmlspecialchars($groupname ?? '', ENT_QUOTES, 'UTF-8') : "";
 
         $current_groupname = (array_key_exists('current_group', $_POST) && !empty(str_replace("%", "", trim($_POST['current_group']))))
                       ? str_replace("%", "", trim($_POST['current_group'])) : "";
@@ -55,8 +55,8 @@
                       ? str_replace("%", "", trim($_REQUEST['current_group'])) : "";
     }
 
-    $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
-    $current_groupname_enc = (!empty($current_groupname)) ? htmlspecialchars($current_groupname, ENT_QUOTES, 'UTF-8') : "";
+    $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
+    $current_groupname_enc = (!empty($current_groupname)) ? htmlspecialchars($current_groupname ?? '', ENT_QUOTES, 'UTF-8') : "";
 
     // feed the sidebar
     $usernameList = $username_enc;

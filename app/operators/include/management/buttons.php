@@ -28,11 +28,11 @@ if (strpos($_SERVER['PHP_SELF'], '/include/management/buttons.php') !== false) {
 }
 
 $username_enc = (isset($username) && !empty($username))
-              ? urlencode(htmlspecialchars($username, ENT_QUOTES, 'UTF-8'))
+              ? urlencode(htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8'))
               : "";
 
 $user_password_enc = (isset($user_password) && !empty($user_password))
-                   ? urlencode(htmlspecialchars($user_password, ENT_QUOTES, 'UTF-8'))
+                   ? urlencode(htmlspecialchars($user_password ?? '', ENT_QUOTES, 'UTF-8'))
                    : "";
 
 if (!empty($username_enc)) {

@@ -51,7 +51,7 @@
     $hotspot_enc = "";
     if (count($hotspot) > 0) {
 
-        $hotspot_enc = htmlspecialchars($hotspot[0], ENT_QUOTES, 'UTF-8');
+        $hotspot_enc = htmlspecialchars($hotspot[0] ?? '', ENT_QUOTES, 'UTF-8');
 
         if (count($hotspot) > 1) {
             $hotspot_enc .= ", &hellip;";
@@ -168,7 +168,7 @@
         $tmp = array();
         if (count($hotspot) > 0) {
             foreach ($hotspot as $item) {
-                $tmp[] = "hotspot[]=" . htmlspecialchars($item, ENT_QUOTES, 'UTF-8');
+                $tmp[] = "hotspot[]=" . htmlspecialchars($item ?? '', ENT_QUOTES, 'UTF-8');
             }
         }
 
@@ -210,7 +210,7 @@
 
             // escape row elements
             for ($i = 0; $i < $rowlen; $i++) {
-                $row[$i] = htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8');
+                $row[$i] = htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8');
             }
 
             list($radAcctId, $hotspot, $username, $framedIPAddress, $acctStartTime, $acctStopTime,

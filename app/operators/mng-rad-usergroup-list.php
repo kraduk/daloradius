@@ -61,7 +61,7 @@
 
     $username = (array_key_exists('username', $_GET) && !empty(str_replace("%", "", trim($_GET['username']))))
               ? str_replace("%", "", trim($_GET['username'])) : "";
-    $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+    $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
     
     
     // print HTML prologue
@@ -181,7 +181,7 @@
         
             // escape row elements
             for ($i = 0; $i < $row0len; $i++) {
-                $row0[$i] = htmlspecialchars($row0[$i], ENT_QUOTES, 'UTF-8');
+                $row0[$i] = htmlspecialchars($row0[$i] ?? '', ENT_QUOTES, 'UTF-8');
             }
         
             list($this_username, $fullname) = $row0;
@@ -199,7 +199,7 @@
         
                 // escape row elements
                 for ($i = 0; $i < $row1len; $i++) {
-                    $row1[$i] = htmlspecialchars($row1[$i], ENT_QUOTES, 'UTF-8');
+                    $row1[$i] = htmlspecialchars($row1[$i] ?? '', ENT_QUOTES, 'UTF-8');
                 }
             
                 list($this_groupname, $this_priority) = $row1;

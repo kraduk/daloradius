@@ -36,11 +36,11 @@
     // and leave validation/escaping to other functions used later in the script
     $ratename = (array_key_exists('ratename', $_GET) && isset($_GET['ratename']))
               ? trim(str_replace("%", "", $_GET['ratename'])) : "";
-    $ratename_enc = (!empty($ratename)) ? htmlspecialchars($ratename, ENT_QUOTES, 'UTF-8') : "";
+    $ratename_enc = (!empty($ratename)) ? htmlspecialchars($ratename ?? '', ENT_QUOTES, 'UTF-8') : "";
 
     $username = (array_key_exists('username', $_GET) && isset($_GET['username']))
               ? trim(str_replace("%", "", $_GET['username'])) : "";
-    $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+    $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
     
     // in other cases we just check that syntax is ok
     $startdate = (array_key_exists('startdate', $_GET) && isset($_GET['startdate']) &&
@@ -231,7 +231,7 @@
 
             while($row = $res->fetchRow()) {
                 foreach ($row as $i => $value) {
-                    $row[$i] = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+                    $row[$i] = htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
                 }
 
                 list($username, $nasIPAddress, $acctStartTime, $sessionTime, $rateCost) = $row;

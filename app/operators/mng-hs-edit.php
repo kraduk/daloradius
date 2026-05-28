@@ -61,7 +61,7 @@
     }
 
     // from now on we can assume that $name is valid
-    $name_enc = (!empty($name)) ? htmlspecialchars($name, ENT_QUOTES, 'UTF-8') : "";
+    $name_enc = (!empty($name)) ? htmlspecialchars($name ?? '', ENT_QUOTES, 'UTF-8') : "";
 
     //feed the sidebar variables
     $edit_hotspotname = $name_enc;

@@ -61,7 +61,7 @@
         $paymentname = "";
     }
 
-    $paymentname_enc = (!empty($paymentname)) ? htmlspecialchars($paymentname, ENT_QUOTES, 'UTF-8') : "";
+    $paymentname_enc = (!empty($paymentname)) ? htmlspecialchars($paymentname ?? '', ENT_QUOTES, 'UTF-8') : "";
 
     //feed the sidebar variables
     $edit_paymentname = $paymentname_enc;

@@ -43,7 +43,7 @@
 
     $username = (array_key_exists('username', $_GET) && isset($_GET['username']))
               ? str_replace('%', '', $_GET['username']) : "";
-    $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+    $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
 
     //feed the sidebar variables
     $overall_upload_username = $username_enc;

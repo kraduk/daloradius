@@ -268,7 +268,7 @@
 
             // print escaped row elements
             for ($i = 0; $i < $rowlen; $i++) {
-                printf("<td>%s</td>", htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8'));
+                printf("<td>%s</td>", htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8'));
             }
 
             // actions

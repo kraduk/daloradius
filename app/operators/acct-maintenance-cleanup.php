@@ -71,7 +71,7 @@
 
             if (!empty($username)) {
 
-                $username_enc = htmlspecialchars($username, ENT_QUOTES, 'UTF-8');
+                $username_enc = htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8');
 
                 $sql = sprintf("SELECT COUNT(radacctid) FROM %s WHERE username='%s' AND acctstoptime IS NULL",
                                $configValues['CONFIG_DB_TBL_RADACCT'], $dbSocket->escapeSimple($username));

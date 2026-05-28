@@ -65,7 +65,7 @@
     // and leave validation/escaping to other functions used later in the script
     $username = (array_key_exists('username', $_GET) && !empty(str_replace("%", "", trim($_GET['username']))))
               ? str_replace("%", "", trim($_GET['username'])) : "";
-    $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+    $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
 
     $hiddenPassword = (strtolower($configValues['CONFIG_IFACE_PASSWORD_HIDDEN']) == "yes");
 

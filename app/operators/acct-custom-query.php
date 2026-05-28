@@ -89,7 +89,7 @@
     $where_value = (array_key_exists('where_value', $_GET) && !empty(str_replace("%", "", trim($_GET['where_value']))))
                  ? str_replace("%", "", trim($_GET['where_value'])) : "";
 
-    $where_value_enc = (!empty($where_value)) ? htmlspecialchars($where_value, ENT_QUOTES, 'UTF-8') : "";
+    $where_value_enc = (!empty($where_value)) ? htmlspecialchars($where_value ?? '', ENT_QUOTES, 'UTF-8') : "";
 
     //feed the sidebar variables
     $accounting_custom_startdate = $startdate;
@@ -218,7 +218,7 @@
                         break;
 
                     case 'acctterminatecause':
-                        $value = ($row[$field] == "0") ? 'Unknown' : htmlspecialchars($row[$field], ENT_QUOTES, 'UTF-8');
+                        $value = ($row[$field] == "0") ? 'Unknown' : htmlspecialchars($row[$field] ?? '', ENT_QUOTES, 'UTF-8');
                         break;
 
                     case 'username':
@@ -268,7 +268,7 @@
 
                             $filtered_query_string_pieces[] = sprintf("where_field=%s", $field);
                             $filtered_query_string_pieces[] =
-                                sprintf("where_value=%s", urlencode(htmlspecialchars($row[$field], ENT_QUOTES, 'UTF-8')));
+                                sprintf("where_value=%s", urlencode(htmlspecialchars($row[$field] ?? '', ENT_QUOTES, 'UTF-8')));
 
                             $value = [
                                 'subject' => $row[$field],
@@ -291,7 +291,7 @@
 
 
                     default:
-                        $value = htmlspecialchars($row[$field], ENT_QUOTES, 'UTF-8');
+                        $value = htmlspecialchars($row[$field] ?? '', ENT_QUOTES, 'UTF-8');
                         break;
 
                 }

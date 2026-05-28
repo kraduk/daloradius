@@ -67,7 +67,7 @@
             if (empty($username)) {
                 $required_fields['username'] = t('all','Username');
             } else {
-                $username_enc = htmlspecialchars($username, ENT_QUOTES, 'UTF-8');
+                $username_enc = htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8');
                 $sql_WHERE[] = sprintf("username='%s'", $dbSocket->escapeSimple($username));
             }
             

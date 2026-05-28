@@ -43,7 +43,7 @@
         $operator_username = (array_key_exists('operator_username', $_REQUEST) && !empty(trim(str_replace("%", "", $_REQUEST['operator_username']))))
                            ? trim(str_replace("%", "", $_REQUEST['operator_username'])) : "";
     }
-    $operator_username_enc = (!empty($operator_username)) ? htmlspecialchars($operator_username, ENT_QUOTES, 'UTF-8') : "";
+    $operator_username_enc = (!empty($operator_username)) ? htmlspecialchars($operator_username ?? '', ENT_QUOTES, 'UTF-8') : "";
     
     
     // check if this operator exists

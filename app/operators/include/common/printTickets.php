@@ -47,7 +47,7 @@
 
             $ticketInformation = trim($_POST['ticketInformation'] ?? '');
             if (!empty($ticketInformation)) {
-                $ticketInformation = "<strong>Information</strong>:<br>" . htmlspecialchars($ticketInformation, ENT_QUOTES, 'UTF-8');
+                $ticketInformation = "<strong>Information</strong>:<br>" . htmlspecialchars($ticketInformation ?? '', ENT_QUOTES, 'UTF-8');
                 $ticketInformation = str_replace("\n", "<br>", $ticketInformation);
             }
 
@@ -225,7 +225,7 @@ EOF;
 
             $table = "";
             foreach ($trs as $label => $value) {
-                $table .= sprintf('<tr><th>%s:</th><td>%s</td></tr>', $label, htmlspecialchars($value, ENT_QUOTES, 'UTF-8'));
+                $table .= sprintf('<tr><th>%s:</th><td>%s</td></tr>', $label, htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8'));
             }
 
             echo <<<EOF

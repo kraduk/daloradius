@@ -50,7 +50,7 @@
         
         $vendor = (!$detectVendor && array_key_exists('vendor', $_POST) && !empty(str_replace("%", "", trim($_POST['vendor']))))
                 ? str_replace("%", "", trim($_POST['vendor'])) : "";
-        $vendor_enc = (!empty($vendor)) ? htmlspecialchars($vendor, ENT_QUOTES, 'UTF-8') : "";
+        $vendor_enc = (!empty($vendor)) ? htmlspecialchars($vendor ?? '', ENT_QUOTES, 'UTF-8') : "";
 
         $dictionary = (array_key_exists('dictionary', $_POST) && !empty($_POST['dictionary']))
                     ? $_POST['dictionary'] : "";
@@ -188,7 +188,7 @@
                     $count = count($this_attributes);
                     $format = "processed: %d, deleted: %d, inserted: %d, updated: %d attributes for vendor %s";
                     $successMsg = sprintf($format, $count, $deleted, $inserted, $updated,
-                                          htmlspecialchars($this_vendor, ENT_QUOTES, 'UTF-8'));
+                                          htmlspecialchars($this_vendor ?? '', ENT_QUOTES, 'UTF-8'));
                     $logAction .= sprintf("$format on page: ", $count, $deleted, $inserted, $updated, $this_vendor);
                 }
 

@@ -175,7 +175,7 @@
 
 
     if (!empty($batch_name) && !is_array($batch_name)) {
-        $title .= " :: " . htmlspecialchars($batch_name, ENT_QUOTES, 'UTF-8');
+        $title .= " :: " . htmlspecialchars($batch_name ?? '', ENT_QUOTES, 'UTF-8');
     }
 
 

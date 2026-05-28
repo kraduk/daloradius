@@ -163,7 +163,7 @@
 
             // escape row elements
             for ($i = 0; $i < $rowlen; $i++) {
-                $row[$i] = htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8');
+                $row[$i] = htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8');
             }
 
             list($id, $this_batch_name, $this_batch_desc, $batch_status, $total_users, $active_users, $plan_name,

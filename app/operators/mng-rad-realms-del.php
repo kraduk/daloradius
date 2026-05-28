@@ -93,7 +93,7 @@
         if ($success) {
             $tmp = array();
             foreach ($deleted_values as $deleted_value) {
-                $tmp[] = htmlspecialchars($deleted_value, ENT_QUOTES, 'UTF-8');
+                $tmp[] = htmlspecialchars($deleted_value ?? '', ENT_QUOTES, 'UTF-8');
             }
             
             $successMsg = sprintf("Deleted realm(s): <strong>%s</strong>", implode(", ", $tmp));

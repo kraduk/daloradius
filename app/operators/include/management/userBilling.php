@@ -467,7 +467,7 @@ function userBillingPayPalSummary($startdate, $enddate, $payer_email, $payment_a
         $row = $res->fetchRow();
 
         for ($i=0; $i < count($row); $i++) {
-            $row[$i] = htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8');
+            $row[$i] = htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8');
         }
 
         list( $username, $payer_email, $planName, $planId, $planTotalCost, $planTotalFee, $planTotalTax,

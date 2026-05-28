@@ -50,7 +50,7 @@
             $proxyname = (array_key_exists('proxyname', $_POST) && !empty(str_replace("%", "", trim($_POST['proxyname']))) &&
                           !in_array(str_replace("%", "", trim($_POST['proxyname'])), $valid_proxynames))
                        ? str_replace("%", "", trim($_POST['proxyname'])) : "";
-            $proxyname_enc = (!empty($proxyname)) ? htmlspecialchars($proxyname, ENT_QUOTES, 'UTF-8') : "";
+            $proxyname_enc = (!empty($proxyname)) ? htmlspecialchars($proxyname ?? '', ENT_QUOTES, 'UTF-8') : "";
             
             if (empty($proxyname)) {
                 // emptyn invalid or already existent

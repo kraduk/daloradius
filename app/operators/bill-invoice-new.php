@@ -146,7 +146,7 @@
     
     
     $username = (!empty($user_id)) ? $valid_users[$user_id] : "";
-    $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+    $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
     
     
     $inline_extra_js = "";
@@ -171,7 +171,7 @@
             list($planName, $id) = $row;
             
             $planSelect .= sprintf('<option value="%d">%s</option>',
-                                   intval($id), htmlspecialchars($planName, ENT_QUOTES, 'UTF-8'));
+                                   intval($id), htmlspecialchars($planName ?? '', ENT_QUOTES, 'UTF-8'));
         }
         
         $planSelect .= '</select>';
@@ -265,16 +265,16 @@ EOF;
         
         // print customer info
         printf('<div><strong>Customer</strong>: <a href="bill-pos-edit.php?username=%s">%s</a><br>',
-               $username_enc, htmlspecialchars($contactperson, ENT_QUOTES, 'UTF-8'));
+               $username_enc, htmlspecialchars($contactperson ?? '', ENT_QUOTES, 'UTF-8'));
         
         $arr = array();
         
         if (!empty($city)) {
-            $arr[] = htmlspecialchars($city, ENT_QUOTES, 'UTF-8');
+            $arr[] = htmlspecialchars($city ?? '', ENT_QUOTES, 'UTF-8');
         }
         
         if (!empty($state)) {
-            $arr[] = htmlspecialchars($state, ENT_QUOTES, 'UTF-8');
+            $arr[] = htmlspecialchars($state ?? '', ENT_QUOTES, 'UTF-8');
         }
         
         if (count($arr) > 0) {
@@ -420,11 +420,11 @@ EOF;
         
         foreach ($input_name_value as $name => $value) {
             printf('<td><input type="number" class="form-control" min="0" step=".01" id="item%d_%s" name="item%d[%s]" value="%s"></td>',
-                   $this_id, $name, $this_id, $name, htmlspecialchars($value, ENT_QUOTES, 'UTF-8'));
+                   $this_id, $name, $this_id, $name, htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8'));
         }
         
         printf('<td><input type="text" class="form-control" id="item%d_%s" name="item%d[%s]" value="%s"></td>',
-               $this_id, "notes", $this_id, "notes", htmlspecialchars($this_notes, ENT_QUOTES, 'UTF-8'));
+               $this_id, "notes", $this_id, "notes", htmlspecialchars($this_notes ?? '', ENT_QUOTES, 'UTF-8'));
         
         $onclick = sprintf("removeTableRow('%s')", $itemRowId);
         printf('<td><button type="button" name="remove" onclick="%s" class="btn btn-danger"><i class="bi bi-trash me-1"></i>Remove Item</button></td>', $onclick);

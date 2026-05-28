@@ -301,7 +301,7 @@ function userSubscriptionAnalysis($username, $drawTable, $openAccordion=false) {
                 continue;
             }
 
-            $label = htmlspecialchars($label, ENT_QUOTES, 'UTF-8');
+            $label = htmlspecialchars($label ?? '', ENT_QUOTES, 'UTF-8');
             printf('<th>%s</th>', $label);
         }
 
@@ -314,7 +314,7 @@ function userSubscriptionAnalysis($username, $drawTable, $openAccordion=false) {
             printf('<th style="width: 25%%;">%s</th>', $arr["Label"]);
             for ($i = 1; $i < count($labels); $i++) {
                 $label = $labels[$i];
-                printf('<td>%s</td>', htmlspecialchars($arr[$label], ENT_QUOTES, 'UTF-8'));
+                printf('<td>%s</td>', htmlspecialchars($arr[$label] ?? '', ENT_QUOTES, 'UTF-8'));
             }
 
             echo '</tr>';
@@ -326,8 +326,8 @@ function userSubscriptionAnalysis($username, $drawTable, $openAccordion=false) {
         echo '<table class="table table-striped">';
 
         foreach ($data2 as $label => $value) {
-            $label = htmlspecialchars($label, ENT_QUOTES, 'UTF-8');
-            $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+            $label = htmlspecialchars($label ?? '', ENT_QUOTES, 'UTF-8');
+            $value = htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
             printf('<tr><th style="width: 25%%;text-align: right">%s</th><td style="text-align: left">%s</td></tr>', $label, $value);
         }
 
@@ -433,7 +433,7 @@ function userPlanInformation($username, $drawTable, $openAccordion=false) {
 
         // print header
         foreach ($table_header as $label) {
-            $label = htmlspecialchars($label, ENT_QUOTES, 'UTF-8');
+            $label = htmlspecialchars($label ?? '', ENT_QUOTES, 'UTF-8');
             printf('<th style="width: 25%%">%s</th>', $label);
         }
 
@@ -444,7 +444,7 @@ function userPlanInformation($username, $drawTable, $openAccordion=false) {
         foreach ($table_body as $arr) {
             echo '<tr>';
             foreach ($arr as $value) {
-                $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+                $value = htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
                 printf('<td style="width: 25%%">%s</td>', $value);
             }
             echo '</tr>';
@@ -456,8 +456,8 @@ function userPlanInformation($username, $drawTable, $openAccordion=false) {
         echo '<table class="table table-striped">';
 
         foreach ($data2 as $field => $arr) {
-            $label = htmlspecialchars($arr["Label"], ENT_QUOTES, 'UTF-8');
-            $value = htmlspecialchars($arr["Value"], ENT_QUOTES, 'UTF-8');
+            $label = htmlspecialchars($arr["Label"] ?? '', ENT_QUOTES, 'UTF-8');
+            $value = htmlspecialchars($arr["Value"] ?? '', ENT_QUOTES, 'UTF-8');
             printf('<tr><th style="width: 25%%;text-align: right">%s</th><td style="text-align: left">%s</td></tr>',
                    $label, $value);
         }
@@ -542,8 +542,8 @@ function userConnectionStatus($username, $drawTable, $openAccordion=false) {
         echo '<table class="table table-striped">';
 
         foreach ($data as $field => $arr) {
-            $label = htmlspecialchars($arr["Label"], ENT_QUOTES, 'UTF-8');
-            $value = htmlspecialchars($arr["Value"], ENT_QUOTES, 'UTF-8');
+            $label = htmlspecialchars($arr["Label"] ?? '', ENT_QUOTES, 'UTF-8');
+            $value = htmlspecialchars($arr["Value"] ?? '', ENT_QUOTES, 'UTF-8');
             printf('<tr><th style="width: 25%%;text-align: right">%s</th><td style="text-align: left">%s</td></tr>',
                    $label, $value);
         }

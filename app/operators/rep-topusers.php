@@ -46,7 +46,7 @@
     // and leave validation/escaping to other functions used later in the script
     $username = (array_key_exists('username', $_GET) && !empty(str_replace("%", "", trim($_GET['username']))))
               ? str_replace("%", "", trim($_GET['username'])) : "";
-    $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+    $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
 
     // the array $cols has multiple purposes:
     // - its keys (when non-numerical) can be used
@@ -102,12 +102,12 @@
     $sql_WHERE = array();
     $sql_WHERE[] = "AcctStopTime > '0000-00-00 00:00:01'";
     if (!empty($startdate)) {
-        $partial_query_params[] = sprintf("startdate=%s", urlencode(htmlspecialchars($startdate, ENT_QUOTES, 'UTF-8')));
+        $partial_query_params[] = sprintf("startdate=%s", urlencode(htmlspecialchars($startdate ?? '', ENT_QUOTES, 'UTF-8')));
         $sql_WHERE[] = sprintf("AcctStartTime > '%s'", $dbSocket->escapeSimple($startdate));
     }
 
     if (!empty($enddate)) {
-        $partial_query_params[] = sprintf("enddate=%s", urlencode(htmlspecialchars($enddate, ENT_QUOTES, 'UTF-8')));
+        $partial_query_params[] = sprintf("enddate=%s", urlencode(htmlspecialchars($enddate ?? '', ENT_QUOTES, 'UTF-8')));
         $sql_WHERE[] = sprintf("AcctStartTime < '%s'", $dbSocket->escapeSimple($enddate));
     }
 
@@ -197,7 +197,7 @@
 
             // escape row elements
             for ($i = 0; $i < $rowlen; $i++) {
-                $row[$i] = htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8');
+                $row[$i] = htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8');
             }
 
 

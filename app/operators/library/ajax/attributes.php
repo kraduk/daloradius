@@ -118,7 +118,7 @@ function get_datalist($id, $options) {
     $result = sprintf('<datalist id="%s">', $id);
     
     foreach ($options as $value) {
-        $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+        $value = htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
         $result .= sprintf('<option value="%s">', $value);
     }
     
@@ -169,8 +169,8 @@ function get_select($id, $onclick, $options) {
     $result = sprintf('<select id="%s" onclick="%s">', $id, $onclick);
     
     foreach ($options as $value => $caption) {
-        $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-        $caption = htmlspecialchars($caption, ENT_QUOTES, 'UTF-8');
+        $value = htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
+        $caption = htmlspecialchars($caption ?? '', ENT_QUOTES, 'UTF-8');
         
         // Append each option to the result string
         $result .= sprintf('<option value="%s">%s</option>', $value, $caption);
@@ -455,7 +455,7 @@ switch ($action) {
             echo "objAttributes.disabled = false;\n";
         } else {
             echo "objAttributes.disabled = true;\n";
-            printf("alert('No attributes found for %s.');", htmlspecialchars($vendor, ENT_QUOTES, 'UTF-8'));
+            printf("alert('No attributes found for %s.');", htmlspecialchars($vendor ?? '', ENT_QUOTES, 'UTF-8'));
         }
         
         break;

@@ -68,7 +68,7 @@
                     ? trim($_GET['invoice_status']) : "";
 
     $username = $login_user;
-    $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+    $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
 
     // init logging variables
     $log = "visited page: ";
@@ -103,7 +103,7 @@
 
     if (!empty($invoice_status)) {
         $sql_WHERE[] = sprintf("a.status_id = '%s'", $dbSocket->escapeSimple($invoice_status));
-        $partial_query_params[] = sprintf("invoice_status=%s", htmlspecialchars($invoice_status, ENT_QUOTES, 'UTF-8'));
+        $partial_query_params[] = sprintf("invoice_status=%s", htmlspecialchars($invoice_status ?? '', ENT_QUOTES, 'UTF-8'));
     }
 
     $sql = sprintf("SELECT a.id, a.date, c.value AS status,
@@ -190,7 +190,7 @@
 
             // escape row elements
             for ($i = 0; $i < $rowlen; $i++) {
-                $row[$i] = htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8');
+                $row[$i] = htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8');
             }
 
             list($id, $date, $status, $totalpayed, $totalbilled) = $row;

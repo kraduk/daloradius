@@ -70,7 +70,7 @@
 
     $username = (array_key_exists('username', $_GET) && !empty(str_replace("%", "", trim($_GET['username']))))
               ? str_replace("%", "", trim($_GET['username'])) : "";
-    $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+    $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
 
     // avoid inserting "Any" in the SQL query
     $arr = $valid_billactions;
@@ -79,7 +79,7 @@
                 ? $_GET['billaction'] : "";
     unset($arr);
 
-    $billaction_enc = (!empty($billaction)) ? htmlspecialchars($billaction, ENT_QUOTES, 'UTF-8') : "";
+    $billaction_enc = (!empty($billaction)) ? htmlspecialchars($billaction ?? '', ENT_QUOTES, 'UTF-8') : "";
 
 
     // print HTML prologue
@@ -184,7 +184,7 @@
         while($row = $res->fetchRow(DB_FETCHMODE_ASSOC)) {
             printf('<tr id="row-%d">', $count);
             foreach ($sqlfields as $field) {
-                printf("<td>%s</td>", htmlspecialchars($row[$field], ENT_QUOTES, 'UTF-8'));
+                printf("<td>%s</td>", htmlspecialchars($row[$field] ?? '', ENT_QUOTES, 'UTF-8'));
             }
             echo '</tr>';
             $count++;

@@ -45,7 +45,7 @@
             
             $paymentname = (array_key_exists('paymentname', $_POST) && !empty(trim($_POST['paymentname'])))
                      ? trim($_POST['paymentname']) : "";
-            $paymentname_enc = (!empty($paymentname)) ? htmlspecialchars($paymentname, ENT_QUOTES, 'UTF-8') : "";
+            $paymentname_enc = (!empty($paymentname)) ? htmlspecialchars($paymentname ?? '', ENT_QUOTES, 'UTF-8') : "";
             
             $paymentnotes = (array_key_exists('paymentnotes', $_POST) && !empty(trim($_POST['paymentnotes'])))
                           ? trim($_POST['paymentnotes']) : "";

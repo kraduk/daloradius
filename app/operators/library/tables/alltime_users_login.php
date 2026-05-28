@@ -151,7 +151,7 @@ if ($numrows > 0) {
         $data = intval($row[1]);
 
         echo "<tr>"
-           . "<td>" . htmlspecialchars($row[0], ENT_QUOTES, 'UTF-8') . "</td>"
+           . "<td>" . htmlspecialchars($row[0] ?? '', ENT_QUOTES, 'UTF-8') . "</td>"
            . "<td>" . $data . "</td>"
            . "</tr>";
         $per_page_data += $data;

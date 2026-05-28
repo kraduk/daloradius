@@ -56,11 +56,11 @@
             
             $sourceProfile = (array_key_exists('sourceProfile', $_REQUEST) && isset($_REQUEST['sourceProfile']))
                            ? trim(str_replace("%", "", $_REQUEST['sourceProfile'])) : "";
-            $sourceProfile_enc = (!empty($sourceProfile)) ? htmlspecialchars($sourceProfile, ENT_QUOTES, 'UTF-8') : "";
+            $sourceProfile_enc = (!empty($sourceProfile)) ? htmlspecialchars($sourceProfile ?? '', ENT_QUOTES, 'UTF-8') : "";
             
             $targetProfile = (array_key_exists('targetProfile', $_REQUEST) && isset($_REQUEST['targetProfile']))
                            ? trim(str_replace("%", "", $_REQUEST['targetProfile'])) : "";
-            $targetProfile_enc = (!empty($targetProfile)) ? htmlspecialchars($targetProfile, ENT_QUOTES, 'UTF-8') : "";
+            $targetProfile_enc = (!empty($targetProfile)) ? htmlspecialchars($targetProfile ?? '', ENT_QUOTES, 'UTF-8') : "";
         
             if (empty($sourceProfile) || empty($targetProfile)) {
                 // profiles are required

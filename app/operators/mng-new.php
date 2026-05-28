@@ -54,7 +54,7 @@
             // TODO validate user input
             $username = (array_key_exists('username', $_POST) && !empty(str_replace("%", "", trim($_POST['username']))))
                       ? str_replace("%", "", trim($_POST['username'])) : "";
-            $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+            $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
 
             $authType = (array_key_exists('authType', $_POST) && isset($_POST['authType']) &&
                          in_array($_POST['authType'], array_keys($valid_authTypes))) ? $_POST['authType'] : array_keys($valid_authTypes)[0];
@@ -184,7 +184,7 @@
                 if ($exists) {
                     // user exists
                     $failureMsg = sprintf("record already found in database: <strong>%s</strong>",
-                                          htmlspecialchars($username_to_check, ENT_QUOTES, 'UTF-8'));
+                                          htmlspecialchars($username_to_check ?? '', ENT_QUOTES, 'UTF-8'));
                     $logAction .= "Failed adding new user already existing in database [$username_to_check] on page: ";
                 } else {
 
@@ -306,7 +306,7 @@
 
                     $addedBillingInfo = (add_user_billing_info($dbSocket, $u, $params)) ? "stored" : "nothing to store";
 
-                    $u_enc = htmlspecialchars($u, ENT_QUOTES, 'UTF-8');
+                    $u_enc = htmlspecialchars($u ?? '', ENT_QUOTES, 'UTF-8');
 
                     $successMsg = sprintf('Inserted new <strong>%s</strong>: ', $what)
                                 . sprintf('<a href="mng-edit.php?username=%s" title="Edit">%s</a>', $u_enc, $u_enc)

@@ -752,7 +752,7 @@ function print_input_field($input_descriptor) {
     if (array_key_exists('datalist', $input_descriptor) && is_array($input_descriptor['datalist'])) {
         printf('<datalist id="%s">', $datalist_id);
         foreach ($input_descriptor['datalist'] as $value) {
-            $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+            $value = htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
             printf('<option value="%s">' . "\n", $value);
         }
         echo '</datalist>';
@@ -826,7 +826,7 @@ function print_textarea($textarea_descriptor) {
     echo '>';
 
     if (isset($textarea_descriptor['content'])) {
-        echo htmlspecialchars($textarea_descriptor['content'], ENT_QUOTES, 'UTF-8');
+        echo htmlspecialchars($textarea_descriptor['content'] ?? '', ENT_QUOTES, 'UTF-8');
     }
 
     echo '</textarea>';
@@ -891,9 +891,9 @@ function print_select($select_descriptor) {
                 $value = ((!is_int($key)) ? $key : $elem);
             }
 
-            $caption = htmlspecialchars($elem, ENT_QUOTES, 'UTF-8');
+            $caption = htmlspecialchars($elem ?? '', ENT_QUOTES, 'UTF-8');
 
-            printf('<option value="%s"', htmlspecialchars($value, ENT_QUOTES, 'UTF-8'));
+            printf('<option value="%s"', htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8'));
 
             if (array_key_exists('selected_value', $select_descriptor) && !empty($select_descriptor['selected_value'])) {
 
@@ -1119,9 +1119,9 @@ function menu_print_select($select_descriptor) {
                 $value = ((!is_int($key)) ? $key : $elem);
             }
 
-            $caption = htmlspecialchars($elem, ENT_QUOTES, 'UTF-8');
+            $caption = htmlspecialchars($elem ?? '', ENT_QUOTES, 'UTF-8');
 
-            printf('<option value="%s"', htmlspecialchars($value, ENT_QUOTES, 'UTF-8'));
+            printf('<option value="%s"', htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8'));
 
             if (array_key_exists('selected_value', $select_descriptor) && !empty($select_descriptor['selected_value'])) {
 
@@ -1261,7 +1261,7 @@ function menu_print_input_field($input_descriptor) {
         !empty($input_descriptor['datalist'])) {
         printf('<datalist id="%s">', $datalist_id);
         foreach ($input_descriptor['datalist'] as $value) {
-            $value = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+            $value = htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
             printf('<option value="%s">' . "\n", $value);
         }
         echo '</datalist>';

@@ -53,7 +53,7 @@
             $realmname = (array_key_exists('realmname', $_POST) && !empty(str_replace("%", "", trim($_POST['realmname']))) &&
                           !in_array(str_replace("%", "", trim($_POST['realmname'])), $valid_realmnames))
                        ? str_replace("%", "", trim($_POST['realmname'])) : "";
-            $realmname_enc = (!empty($realmname)) ? htmlspecialchars($realmname, ENT_QUOTES, 'UTF-8') : "";
+            $realmname_enc = (!empty($realmname)) ? htmlspecialchars($realmname ?? '', ENT_QUOTES, 'UTF-8') : "";
             
             if (empty($realmname)) {
                 // emptyn invalid or already existent

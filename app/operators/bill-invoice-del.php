@@ -92,7 +92,7 @@
     
     
     if (!empty($invoice_id) && !is_array($invoice_id)) {
-        $title .= " :: #" . htmlspecialchars($invoice_id, ENT_QUOTES, 'UTF-8');
+        $title .= " :: #" . htmlspecialchars($invoice_id ?? '', ENT_QUOTES, 'UTF-8');
     }
     
 

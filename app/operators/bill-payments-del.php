@@ -86,7 +86,7 @@
     
     
     if (!empty($payment_id) && !is_array($payment_id)) {
-        $title .= " :: " . htmlspecialchars($payment_id, ENT_QUOTES, 'UTF-8');
+        $title .= " :: " . htmlspecialchars($payment_id ?? '', ENT_QUOTES, 'UTF-8');
     }
     
 

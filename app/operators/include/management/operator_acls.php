@@ -64,7 +64,7 @@ function drawOperatorACLs($operator_id = "") {
     while ($row = $res->fetchRow()) {
         
         foreach ($row as $i => $v) {
-            $row[$i] = htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
+            $row[$i] = htmlspecialchars($v ?? '', ENT_QUOTES, 'UTF-8');
         }
         
         list($file, $category, $section, $access) = $row;

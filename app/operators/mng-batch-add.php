@@ -302,14 +302,14 @@
                             if (user_exists($dbSocket, $username)) {
                                 // $username skipped
                                 $detailedInfo[] = sprintf("cannot insert username %s, username exists",
-                                                          htmlspecialchars($username, ENT_QUOTES, 'UTF-8'));
+                                                          htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8'));
                                 continue;
                             }
 
                             if (!insert_single_attribute($dbSocket, $username, $attribute, ':=', $value)) {
                                 // if we fail to insert this user, we skip other queries
                                 $detailedInfo[] = sprintf("cannot insert username %s, db error",
-                                                          htmlspecialchars($username, ENT_QUOTES, 'UTF-8'));
+                                                          htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8'));
                                 continue;
                             }
 
@@ -317,8 +317,8 @@
                             if (!empty($group)) {
                                 if (!insert_single_user_group_mapping($dbSocket, $username, $group, $group_priority)) {
                                     $detailedInfo[] = sprintf("cannot insert user-group mapping %s-%s",
-                                                          htmlspecialchars($username, ENT_QUOTES, 'UTF-8'),
-                                                          htmlspecialchars($group, ENT_QUOTES, 'UTF-8'));
+                                                          htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8'),
+                                                          htmlspecialchars($group ?? '', ENT_QUOTES, 'UTF-8'));
                                 }
                             }
 
@@ -347,7 +347,7 @@
 
                             if (add_user_info($dbSocket, $username, $params) === false) {
                                 $detailedInfo[] = sprintf("cannot insert userinfo for user %s",
-                                                          htmlspecialchars($username, ENT_QUOTES, 'UTF-8'));
+                                                          htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8'));
                             }
 
 
@@ -389,7 +389,7 @@
 
                             if (add_user_billing_info($dbSocket, $username, $params) === false) {
                                 $detailedInfo[] = sprintf("cannot insert billing info for user %s",
-                                                          htmlspecialchars($username, ENT_QUOTES, 'UTF-8'));
+                                                          htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8'));
                             }
 
                             // adding attributes
@@ -419,19 +419,19 @@
                         $form_id = "export-users-form";
                         $exportForm .= sprintf('<form target="_blank" id="%s" ', $form_id) . 'method="POST">'
                                      . sprintf('<input style="display: none" type="hidden" name="batch_name" value="%s">',
-                                               htmlspecialchars($batch_name, ENT_QUOTES, 'UTF-8'))
+                                               htmlspecialchars($batch_name ?? '', ENT_QUOTES, 'UTF-8'))
                                      . '<input style="display: none" type="hidden" name="type" value="batch">';
 
                         if (!empty($planName)) {
                             $exportForm .= sprintf('<input type="hidden" name="plan" value="%s">',
-                                                   htmlspecialchars($planName, ENT_QUOTES, 'UTF-8'));
+                                                   htmlspecialchars($planName ?? '', ENT_QUOTES, 'UTF-8'));
                         }
 
                         for ($i = 0; $i < count($inserted_usernames); $i++) {
                             $u = $inserted_usernames[$i];
                             $p = $inserted_passwords[$i];
-                            $exportForm .= sprintf('<input style="display: none" type="hidden" name="accounts[%d][0]" value="%s">', $i, htmlspecialchars($u, ENT_QUOTES, 'UTF-8'))
-                                         . sprintf('<input style="display: none" type="hidden" name="accounts[%d][1]" value="%s">', $i, htmlspecialchars($p, ENT_QUOTES, 'UTF-8'));
+                            $exportForm .= sprintf('<input style="display: none" type="hidden" name="accounts[%d][0]" value="%s">', $i, htmlspecialchars($u ?? '', ENT_QUOTES, 'UTF-8'))
+                                         . sprintf('<input style="display: none" type="hidden" name="accounts[%d][1]" value="%s">', $i, htmlspecialchars($p ?? '', ENT_QUOTES, 'UTF-8'));
                         }
 
 

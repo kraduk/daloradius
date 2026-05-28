@@ -34,7 +34,7 @@
     // validate this parameter before including menu
     $ipaddress = (array_key_exists('ipaddress', $_GET) && isset($_GET['ipaddress']) &&
                   preg_match(LOOSE_IP_REGEX, $_GET['ipaddress'], $m) !== false) ? $_GET['ipaddress'] : "";
-    $ipaddress_enc = (!empty($ipaddress)) ? htmlspecialchars($ipaddress, ENT_QUOTES, 'UTF-8') : "";
+    $ipaddress_enc = (!empty($ipaddress)) ? htmlspecialchars($ipaddress ?? '', ENT_QUOTES, 'UTF-8') : "";
 
     $cols = array(
                     "radacctid" => t('all','ID'),
@@ -170,7 +170,7 @@
 
             // escape row elements
             for ($i = 0; $i < $rowlen; $i++) {
-                $row[$i] = htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8');
+                $row[$i] = htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8');
             }
             
             list($radAcctId, $hotspot, $username, $framedIPAddress, $acctStartTime, $acctStopTime,

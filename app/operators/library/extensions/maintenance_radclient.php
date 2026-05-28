@@ -34,7 +34,7 @@ if (strpos($_SERVER['PHP_SELF'], $extension_file) !== false) {
     exit;
 }
 
-$extension_file_enc = htmlspecialchars($extension_file, ENT_QUOTES, 'UTF-8');
+$extension_file_enc = htmlspecialchars($extension_file ?? '', ENT_QUOTES, 'UTF-8');
 
 /**
  * Check if the radclient binary is present in the system.

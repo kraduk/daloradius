@@ -39,13 +39,13 @@
 
     function get_caption($message) {
         $caption = sprintf("Created by <strong>%s</strong> on <strong>%s</strong>.",
-                            htmlspecialchars($message['created_by'], ENT_QUOTES, 'UTF-8'),
-                            htmlspecialchars($message['created_on'], ENT_QUOTES, 'UTF-8'));
+                            htmlspecialchars($message['created_by'] ?? '', ENT_QUOTES, 'UTF-8'),
+                            htmlspecialchars($message['created_on'] ?? '', ENT_QUOTES, 'UTF-8'));
         if (isset($message['modified_on']) && !empty($message['modified_on']) &&
             isset($message['modified_by']) && !empty($message['modified_by'])) {
             $caption .= sprintf("<br>Last modification by <strong>%s</strong> on <strong>%s</strong>.",
-                                htmlspecialchars($message['modified_by'], ENT_QUOTES, 'UTF-8'),
-                                htmlspecialchars($message['modified_on'], ENT_QUOTES, 'UTF-8'));
+                                htmlspecialchars($message['modified_by'] ?? '', ENT_QUOTES, 'UTF-8'),
+                                htmlspecialchars($message['modified_on'] ?? '', ENT_QUOTES, 'UTF-8'));
         }
         return $caption;
     }

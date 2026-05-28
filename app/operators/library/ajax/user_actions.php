@@ -108,7 +108,7 @@ if (array_key_exists('username', $_GET) && isset($_GET['username']) &&
     $username_list = "'" . implode("', '", $usernames) . "'";
 
     // used in presentation
-    $username_list_enc = htmlspecialchars($username_list, ENT_QUOTES, 'UTF-8');
+    $username_list_enc = htmlspecialchars($username_list ?? '', ENT_QUOTES, 'UTF-8');
     $label = (count($usernames) > 1 || count($usernames) == 0) ? "users" : "user";
 
     switch ($action) {
@@ -163,7 +163,7 @@ if (array_key_exists('username', $_GET) && isset($_GET['username']) &&
                 $sql = $sql0 . implode(", ", $sql_pieces);
                 $res = $dbSocket->query($sql);
                 $to_disable_list = implode(", ", $to_disable);
-                $to_disable_list_enc = htmlspecialchars($to_disable_list, ENT_QUOTES, 'UTF-8');
+                $to_disable_list_enc = htmlspecialchars($to_disable_list ?? '', ENT_QUOTES, 'UTF-8');
                 if (DB::isError($res)) {
                     $class = "danger";
                     $message = sprintf('Failed to disable %s <strong>%s</strong>.', $label, $to_disable_list_enc);
@@ -239,7 +239,7 @@ if (array_key_exists('username', $_GET) && isset($_GET['username']) &&
             if ($numrows > 0) {
                 $class = "danger";
                 $message = sprintf('Please note that user <strong>%s</strong> is currently disabled.',
-                                   htmlspecialchars($username, ENT_QUOTES, 'UTF-8'))
+                                   htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8'))
                          . '<br>'
                          . sprintf('To enable this user, remove it from the <em>%s</em> profile.', $disabled_groupname);
             }

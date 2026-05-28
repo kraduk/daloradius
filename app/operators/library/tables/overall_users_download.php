@@ -32,7 +32,7 @@ if (strpos($_SERVER['PHP_SELF'], $extension_file) !== false) {
 
 $username = (array_key_exists('username', $_GET) && isset($_GET['username']))
           ? str_replace('%', '', $_GET['username']) : "";
-$username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+$username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
 
 $type = (array_key_exists('type', $_GET) && isset($_GET['type']) &&
              in_array(strtolower($_GET['type']), array( "daily", "monthly", "yearly" )))
@@ -191,7 +191,7 @@ if ($is_valid) {
             $per_page_data += $data;
 
             echo "<tr>"
-               . "<td>" . htmlspecialchars($row[0], ENT_QUOTES, 'UTF-8') . "</td>"
+               . "<td>" . htmlspecialchars($row[0] ?? '', ENT_QUOTES, 'UTF-8') . "</td>"
                . "<td>" . number_format(floatval($data / $size_division[$size]), 1, ".", "") . " " . $short_size[$size] . "</td>"
                . "</tr>";
 

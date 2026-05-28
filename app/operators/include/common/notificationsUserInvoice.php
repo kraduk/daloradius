@@ -199,7 +199,7 @@
         
         while ($row = $res->fetchRow()) {
             foreach ($row as $i => $value) {
-                $row[$i] = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+                $row[$i] = htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
             }
 
             list($id, $plan_id, $amount, $tax_amount, $notes, $planName) = $row;

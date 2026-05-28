@@ -61,7 +61,7 @@
     
     
     // from now on, we can assume that nasname is valid
-    $nasname_enc = (!empty($nasname)) ? htmlspecialchars($nasname, ENT_QUOTES, 'UTF-8') : "";
+    $nasname_enc = (!empty($nasname)) ? htmlspecialchars($nasname ?? '', ENT_QUOTES, 'UTF-8') : "";
     
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

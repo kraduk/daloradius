@@ -35,11 +35,11 @@
     // validate this parameter before including menu
     $batch_name = (array_key_exists('batch_name', $_GET) && !empty(str_replace("%", "", trim($_GET['batch_name']))))
                 ? str_replace("%", "", trim($_GET['batch_name'])) : "";
-    $batch_name_enc = (!empty($batch_name)) ? htmlspecialchars($batch_name, ENT_QUOTES, 'UTF-8') : "";
+    $batch_name_enc = (!empty($batch_name)) ? htmlspecialchars($batch_name ?? '', ENT_QUOTES, 'UTF-8') : "";
 
     $username = (array_key_exists('username', $_GET) && !empty(str_replace("%", "", trim($_GET['username']))))
               ? str_replace("%", "", trim($_GET['username'])) : "";
-    $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+    $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
 
     // table1
     $cols1 = array(
@@ -184,7 +184,7 @@
 
             // escape row elements
             for ($i = 0; $i < $rowlen; $i++) {
-                $row[$i] = htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8');
+                $row[$i] = htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8');
             }
         
         
@@ -399,7 +399,7 @@
 
                 // escape row elements
                 for ($i = 0; $i < $rowlen; $i++) {
-                    $row[$i] = htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8');
+                    $row[$i] = htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8');
                 }
 
                 list($username, $active, $datetime) = $row;

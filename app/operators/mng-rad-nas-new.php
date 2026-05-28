@@ -44,7 +44,7 @@
             $nassecret = (array_key_exists('nassecret', $_POST) && !empty(str_replace("%", "", trim($_POST['nassecret']))))
                        ? str_replace("%", "", trim($_POST['nassecret'])) : "";
             
-            $nasname_enc = (!empty($nasname)) ? htmlspecialchars($nasname, ENT_QUOTES, 'UTF-8') : "";
+            $nasname_enc = (!empty($nasname)) ? htmlspecialchars($nasname ?? '', ENT_QUOTES, 'UTF-8') : "";
             
             $nastype = (array_key_exists('nastype', $_POST) && isset($_POST['nastype']) &&
                         in_array($_POST['nastype'], $valid_nastypes)) ? $_POST['nastype'] : "other";

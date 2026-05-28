@@ -30,7 +30,7 @@
     include("../common/includes/layout.php");
     
     $username = $login_user;
-    $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+    $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
 
     // validate this parameter before including menu
     $startdate = (array_key_exists('startdate', $_GET) && !empty(trim($_GET['startdate'])) &&
@@ -177,7 +177,7 @@
 
             // escape row elements
             for ($i = 0; $i < $rowlen; $i++) {
-                $row[$i] = htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8');
+                $row[$i] = htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8');
             }
             
             list($radAcctId, $hotspot, $nasIPAddress, $framedIPAddress, $acctStartTime, $acctStopTime,

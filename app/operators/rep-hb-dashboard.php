@@ -141,7 +141,7 @@
             
             // escape row elements
             foreach ($row as $field => $value) {
-                $row[$field] = htmlspecialchars($row[$field], ENT_QUOTES, 'UTF-8');
+                $row[$field] = htmlspecialchars($row[$field] ?? '', ENT_QUOTES, 'UTF-8');
             }
 
             $content = array();

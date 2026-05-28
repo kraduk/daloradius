@@ -57,7 +57,7 @@ if (array_key_exists('attribute', $_GET) && isset($_GET['attribute']) &&
             $sql = sprintf("SELECT RecommendedTooltip FROM %s WHERE Attribute='%s'",
                            $configValues['CONFIG_DB_TBL_DALODICTIONARY'], $dbSocket->escapeSimple($attribute));
             $tooltip = trim($dbSocket->getOne($sql));
-            $tooltip = (empty($tooltip)) ? "(n/a)" : addslashes(htmlspecialchars($tooltip, ENT_QUOTES, 'UTF-8'));
+            $tooltip = (empty($tooltip)) ? "(n/a)" : addslashes(htmlspecialchars($tooltip ?? '', ENT_QUOTES, 'UTF-8'));
             
             echo <<<EOF
 

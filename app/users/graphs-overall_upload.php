@@ -40,7 +40,7 @@
           ? strtolower($_GET['size']) : "megabytes";
 
     $username = $login_user;
-    $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+    $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
 
     // init logging variables
     $log = "visited page: ";

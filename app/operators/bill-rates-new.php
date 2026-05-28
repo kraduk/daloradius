@@ -53,7 +53,7 @@
             if (empty($ratename)) {
                 $required_fields['ratename'] = t('all','RateName');
             } else {
-                $ratename_enc = htmlspecialchars($ratename, ENT_QUOTES, 'UTF-8');
+                $ratename_enc = htmlspecialchars($ratename ?? '', ENT_QUOTES, 'UTF-8');
             }
 
             $ratecost = (array_key_exists('ratecost', $_POST) && intval(trim($_POST['ratecost'])) > 0)

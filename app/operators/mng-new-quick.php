@@ -54,7 +54,7 @@
             // TODO validate user input
             $username = (array_key_exists('username', $_POST) && isset($_POST['username']))
                       ? trim(str_replace("%", "", $_POST['username'])) : "";
-            $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+            $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
 
             // search:  \$([A-Za-z0-9_]+)\s+=\s+\$_POST\[\'([A-Za-z0-9_]+)\'\];
             // replace: $\1 = (array_key_exists('\2', $_POST) && isset($_POST['\2'])) ? $_POST['\2'] : "";

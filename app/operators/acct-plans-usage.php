@@ -37,11 +37,11 @@
 
 	$username = (array_key_exists('username', $_GET) && !empty(str_replace("%", "", trim($_GET['username']))))
               ? str_replace("%", "", trim($_GET['username'])) : "";
-	$username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+	$username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
     
     $planname = (array_key_exists('planname', $_GET) && !empty(str_replace("%", "", trim($_GET['planname']))))
               ? str_replace("%", "", trim($_GET['planname'])) : "";
-    $planname_enc = (!empty($planname)) ? htmlspecialchars($planname, ENT_QUOTES, 'UTF-8') : "";
+    $planname_enc = (!empty($planname)) ? htmlspecialchars($planname ?? '', ENT_QUOTES, 'UTF-8') : "";
     
 	// we validate starting and ending dates
     $startdate = (array_key_exists('startdate', $_GET) && isset($_GET['startdate']) &&
@@ -215,7 +215,7 @@
 
             // escape row elements
             for ($i = 0; $i < $rowlen; $i++) {
-                $row[$i] = htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8');
+                $row[$i] = htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8');
             }
             
             list( $this_username, $this_planname, $this_sessiontime,

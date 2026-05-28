@@ -42,7 +42,7 @@
     // and leave validation/escaping to other functions used later in the script
     $username = (array_key_exists('username', $_GET) && isset($_GET['username']))
               ? trim(str_replace("%", "", $_GET['username'])) : "";
-    $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+    $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
     
     // in other cases we just check that syntax is ok
     $startdate = (array_key_exists('startdate', $_GET) && isset($_GET['startdate']) &&
@@ -125,7 +125,7 @@
     
     if (!empty($invoice_status)) {
         $sql_WHERE[] = sprintf("a.status_id = '%s'", $dbSocket->escapeSimple($invoice_status));
-        $partial_query_params[] = sprintf("invoice_status=%s", htmlspecialchars($invoice_status, ENT_QUOTES, 'UTF-8'));
+        $partial_query_params[] = sprintf("invoice_status=%s", htmlspecialchars($invoice_status ?? '', ENT_QUOTES, 'UTF-8'));
     }
     
     $sql = sprintf("SELECT a.id, a.date, a.status_id, a.type_id, b.contactperson, b.username, c.value AS status,
@@ -220,7 +220,7 @@
         
             // escape row elements
             for ($i = 0; $i < $rowlen; $i++) {
-                $row[$i] = htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8');
+                $row[$i] = htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8');
             }
             
             list($id, $date, $status_id, $type_id, $contactperson, $username, $status, $totalpayed, $totalbilled) = $row;

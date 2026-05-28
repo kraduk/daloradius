@@ -54,7 +54,7 @@
             $groupname = (array_key_exists('groupname', $_POST) && !empty(str_replace("%", "", trim($_POST['groupname']))))
                        ? str_replace("%", "", trim($_POST['groupname'])) : "";
             
-            $groupname_enc = (!empty($groupname)) ? htmlspecialchars($groupname, ENT_QUOTES, 'UTF-8') : "";
+            $groupname_enc = (!empty($groupname)) ? htmlspecialchars($groupname ?? '', ENT_QUOTES, 'UTF-8') : "";
             
             $nasportid = (array_key_exists('nasportid', $_POST) && intval(trim($_POST['nasportid'])) > 0)
                        ? intval(trim($_POST['nasportid'])) : 0;

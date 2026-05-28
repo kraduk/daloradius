@@ -48,7 +48,7 @@
 
             $name = (array_key_exists('name', $_POST) && !empty(str_replace("%", "", trim($_POST['name']))))
                   ? str_replace("%", "", trim($_POST['name'])) : "";
-            $name_enc = (!empty($name)) ? htmlspecialchars($name, ENT_QUOTES, 'UTF-8') : "";
+            $name_enc = (!empty($name)) ? htmlspecialchars($name ?? '', ENT_QUOTES, 'UTF-8') : "";
 
             $geocode = (array_key_exists('geocode', $_POST) && !empty(trim($_POST['geocode']))) ? trim($_POST['geocode']) : "";
             $hotspot_type = (array_key_exists('hotspot_type', $_POST) && !empty(trim($_POST['hotspot_type']))) ? trim($_POST['hotspot_type']) : "";

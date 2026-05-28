@@ -125,7 +125,7 @@ function get_batch_details_context($configValues, $dbSocket, $batch_name) {
     while($row = $res->fetchRow()) {
 
         foreach ($row as $i => $value) {
-            $row[$i] = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+            $row[$i] = htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
         }
 
         list(
@@ -177,8 +177,8 @@ function get_batch_details_context($configValues, $dbSocket, $batch_name) {
         $service_plan_info = "<table $tableTags>";
 
         foreach ($row as $rowName => $rowValue) {
-            $rowName = htmlspecialchars($rowName, ENT_QUOTES, 'UTF-8');
-            $rowValue = htmlspecialchars($rowValue, ENT_QUOTES, 'UTF-8');
+            $rowName = htmlspecialchars($rowName ?? '', ENT_QUOTES, 'UTF-8');
+            $rowValue = htmlspecialchars($rowValue ?? '', ENT_QUOTES, 'UTF-8');
 
             $service_plan_info .= "<tr $tableTrTags>"
                                 . sprintf("<th>%s</th>", $rowName)
@@ -237,7 +237,7 @@ function get_batch_details_context($configValues, $dbSocket, $batch_name) {
     $batch_cost = 0;
     while($row = $res->fetchRow(DB_FETCHMODE_ASSOC)) {
         foreach ($row as $i => $value) {
-            $row[$i] = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+            $row[$i] = htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
         }
 
         list($id, $username, $acctstarttime, $batch_name) = $row;

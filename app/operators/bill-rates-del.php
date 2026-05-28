@@ -119,7 +119,7 @@
     
     
     if (!empty($ratename) && !is_array($ratename)) {
-        $title .= " :: " . htmlspecialchars($ratename, ENT_QUOTES, 'UTF-8');
+        $title .= " :: " . htmlspecialchars($ratename ?? '', ENT_QUOTES, 'UTF-8');
     }
     
 

@@ -67,7 +67,7 @@
                 $current_datetime = date('Y-m-d H:i:s');
                 $currBy = $_SESSION['operator_user'];
 
-                $hotspot_name_enc = htmlspecialchars($hotspot_name, ENT_QUOTES, 'UTF-8');
+                $hotspot_name_enc = htmlspecialchars($hotspot_name ?? '', ENT_QUOTES, 'UTF-8');
 
                 $sql = sprintf("INSERT INTO %s (name, mac, geocode, creationdate, creationby, updatedate, updateby)
                                 VALUES (?, ?, ?, ?, ?, NULL, NULL)", $configValues['CONFIG_DB_TBL_DALOHOTSPOTS']);
@@ -92,7 +92,7 @@
                 $res = $dbSocket->execute($stmt, $hotspot_id);
 
                 $hotspot_name = $res->fetchrow()[0];
-                $hotspot_name_enc = htmlspecialchars($hotspot_name, ENT_QUOTES, 'UTF-8');
+                $hotspot_name_enc = htmlspecialchars($hotspot_name ?? '', ENT_QUOTES, 'UTF-8');
 
                 $sql = sprintf("DELETE FROM %s WHERE id=?", $configValues['CONFIG_DB_TBL_DALOHOTSPOTS']);
                 $stmt = $dbSocket->prepare($sql);
@@ -244,7 +244,7 @@ EOF;
         $rowlen = count($row);
 
         for ($i = 0; $i < $rowlen; $i++) {
-            $row[$i] = htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8');
+            $row[$i] = htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8');
         }
 
         list($id, $name, $mac, $geocode) = $row;

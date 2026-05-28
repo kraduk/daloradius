@@ -346,7 +346,7 @@ EOF;
     exec($exec, $output, $return_status);
     
     foreach($output as $text) {
-        printf("%s\n", htmlspecialchars($text, ENT_QUOTES, 'UTF-8'));
+        printf("%s\n", htmlspecialchars($text ?? '', ENT_QUOTES, 'UTF-8'));
     }
     echo '</pre>';
     close_tab();

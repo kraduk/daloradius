@@ -38,7 +38,7 @@ $type = (array_key_exists('type', $_GET) && isset($_GET['type']) &&
 
 $username = (array_key_exists('username', $_GET) && isset($_GET['username']))
           ? str_replace('%', '', $_GET['username']) : "";
-$username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+$username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
 
 // whenever possible we use a whitelist approach
 $orderType = (array_key_exists('orderType', $_GET) && isset($_GET['orderType']) &&
@@ -176,7 +176,7 @@ if ($is_valid) {
             $data = intval($row[1]);
 
             echo "<tr>"
-               . "<td>" . htmlspecialchars($row[0], ENT_QUOTES, 'UTF-8') . "</td>"
+               . "<td>" . htmlspecialchars($row[0] ?? '', ENT_QUOTES, 'UTF-8') . "</td>"
                . "<td>" . $data . "</td>"
                . "</tr>";
             $per_page_data += $data;

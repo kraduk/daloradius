@@ -58,7 +58,7 @@
         $profile_name = "";
     }
 
-    $profile_name_enc = (!empty($profile_name)) ? htmlspecialchars($profile_name, ENT_QUOTES, 'UTF-8') : "";
+    $profile_name_enc = (!empty($profile_name)) ? htmlspecialchars($profile_name ?? '', ENT_QUOTES, 'UTF-8') : "";
 
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -106,7 +106,7 @@
             while ($row = $res->fetchRow()) {
 
                 foreach ($row as $i => $v) {
-                    $row[$i] = htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
+                    $row[$i] = htmlspecialchars($v ?? '', ENT_QUOTES, 'UTF-8');
                 }
 
                 $id = intval($row[5]);
@@ -117,7 +117,7 @@
                       ? "password" : "text";
 
                 $onclick = sprintf("location.href='mng-rad-profiles-del.php?profile_name=%s&id=%d&tablename=%s'",
-                                   urlencode(htmlspecialchars($profile_name, ENT_QUOTES, 'UTF-8')), $id, $table_name);
+                                   urlencode(htmlspecialchars($profile_name ?? '', ENT_QUOTES, 'UTF-8')), $id, $table_name);
 
                 $descriptor = array( 'onclick' => $onclick, 'attribute' => $row[0], 'select_name' => $name, 'selected_option' => $row[1],
                                      'id__attribute' => $id__attribute, 'type' => $type, 'value' => $row[2], 'name' => $name,
@@ -132,7 +132,7 @@
                . '</small>';
 
         } else {
-            $msg = htmlspecialchars($no_attributes_message, ENT_QUOTES, 'UTF-8');
+            $msg = htmlspecialchars($no_attributes_message ?? '', ENT_QUOTES, 'UTF-8');
 
             echo <<<HTML
             <div class="alert alert-info d-flex align-items-center" role="alert">

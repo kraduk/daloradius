@@ -148,7 +148,7 @@
         $username = "";
     }
 
-    $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+    $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
 
     //feed the sidebar variables
     $edit_username = $username_enc;

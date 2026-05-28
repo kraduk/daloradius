@@ -34,7 +34,7 @@
     // validate this parameter before including menu
     $username = (array_key_exists('username', $_GET) && !empty(str_replace("%", "", trim($_GET['username']))))
               ? str_replace("%", "", trim($_GET['username'])) : "";
-    $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+    $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
     
     $cols = array(
                     'id' => t('all','ID'),
@@ -121,10 +121,10 @@
                 
                 echo "<tr>";
                 for ($i = 0; $i < $rowlen; $i++) {
-                    printf("<td>%s</td>", htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8'));
+                    printf("<td>%s</td>", htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8'));
                 }
                 
-                $this_username = htmlspecialchars($row[1], ENT_QUOTES, 'UTF-8');
+                $this_username = htmlspecialchars($row[1] ?? '', ENT_QUOTES, 'UTF-8');
                 echo '<td>';
                 $formId = $this_username . "-form-del";
                 printf('<form id="%s" style="display: none" method="POST" action="mng-del.php">', $formId);

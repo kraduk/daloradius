@@ -118,7 +118,7 @@
     
     
     if (!empty($paymentname) && !is_array($paymentname)) {
-        $title .= " :: " . htmlspecialchars($paymentname, ENT_QUOTES, 'UTF-8');
+        $title .= " :: " . htmlspecialchars($paymentname ?? '', ENT_QUOTES, 'UTF-8');
     }
     
 

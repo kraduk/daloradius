@@ -40,7 +40,7 @@
     $groupname = (array_key_exists('groupname', $_GET) && !empty(str_replace("%", "", trim($_GET['groupname']))))
                ? str_replace("%", "", trim($_GET['groupname'])) : "";
     
-    $groupname_enc = (!empty($groupname)) ? htmlspecialchars($groupname, ENT_QUOTES, 'UTF-8') : "";
+    $groupname_enc = (!empty($groupname)) ? htmlspecialchars($groupname ?? '', ENT_QUOTES, 'UTF-8') : "";
     
     $cols = array(
                     "selected",
@@ -147,7 +147,7 @@
         
             // escape row elements
             for ($i = 0; $i < $rowlen; $i++) {
-                $row[$i] = htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8');
+                $row[$i] = htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8');
             }
             
             list($id, $groupname, $attribute, $op, $value) = $row;

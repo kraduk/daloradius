@@ -89,7 +89,7 @@
     }
 
     function print_dashboard_info_message($message) {
-        $message = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
+        $message = htmlspecialchars($message ?? '', ENT_QUOTES, 'UTF-8');
         echo <<<EOF
         <div class="col-12 m-0">
           <div class="alert alert-info d-flex align-items-center" role="alert">

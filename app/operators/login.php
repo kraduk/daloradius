@@ -126,7 +126,7 @@ body {
         } else {
             $locations = array_keys($configValues['CONFIG_LOCATIONS']);
             foreach ($locations as $location) {
-                $location = htmlspecialchars($location, ENT_QUOTES, 'UTF-8');
+                $location = htmlspecialchars($location ?? '', ENT_QUOTES, 'UTF-8');
                 printf($defaultLocationFormat, $location, $location);
             }
         }

@@ -50,7 +50,7 @@ function print_system_log($logfile_paths, $log_label, $filter, $count) {
     // If the log file is not readable, generate an error message and exit
     if (!is_readable($logfile)) {
         $failureMsg = sprintf("Error reading log file: <strong>%s</strong>.<br>Is this file readable?",
-                              htmlspecialchars($logfile, ENT_QUOTES, 'UTF-8'));
+                              htmlspecialchars($logfile ?? '', ENT_QUOTES, 'UTF-8'));
         return $failureMsg;
     }
 
@@ -69,7 +69,7 @@ function print_system_log($logfile_paths, $log_label, $filter, $count) {
                     break;
                 }
 
-                echo htmlspecialchars($line, ENT_QUOTES, 'UTF-8');
+                echo htmlspecialchars($line ?? '', ENT_QUOTES, 'UTF-8');
                 $_count--;
             }
         }
@@ -77,7 +77,7 @@ function print_system_log($logfile_paths, $log_label, $filter, $count) {
         return null;
     }
 
-    $failureMsg = sprintf("It looks like log file <strong>%s</strong> is empty.", htmlspecialchars($logfile, ENT_QUOTES, 'UTF-8'));
+    $failureMsg = sprintf("It looks like log file <strong>%s</strong> is empty.", htmlspecialchars($logfile ?? '', ENT_QUOTES, 'UTF-8'));
     return $failureMsg;
 
 }

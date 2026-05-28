@@ -128,7 +128,7 @@ echo '</div>';
 close_fieldset();
 
 echo '<small class="mt-4 d-block">You can also manage all user-group mappings for this user '
-   . sprintf('<a href="mng-rad-usergroup-list-user.php?username=%s">here</a>.', htmlspecialchars($username, ENT_QUOTES, 'UTF-8'))
+   . sprintf('<a href="mng-rad-usergroup-list-user.php?username=%s">here</a>.', htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8'))
    . '</small>';
 
 echo '</div><!-- .container -->';

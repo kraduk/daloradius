@@ -100,7 +100,7 @@
                             
                             $format = "Cannot delete the last check (password like?) attribute for the selected user (%s)";
                             $failureMsg = sprintf($format,
-                                                  htmlspecialchars($usernames[0], ENT_QUOTES, 'UTF-8'));
+                                                  htmlspecialchars($usernames[0] ?? '', ENT_QUOTES, 'UTF-8'));
                             $logAction = sprintf("$format on page: ", $username[0]);
                         } else {
                         
@@ -111,8 +111,8 @@
                             $logDebugSQL .= "$sql;\n";
                             
                             $format = "Deleted attribute %s for user %s";
-                            $successMsg = sprintf($format, htmlspecialchars($attribute, ENT_QUOTES, 'UTF-8'),
-                                                           htmlspecialchars($usernames[0], ENT_QUOTES, 'UTF-8'));
+                            $successMsg = sprintf($format, htmlspecialchars($attribute ?? '', ENT_QUOTES, 'UTF-8'),
+                                                           htmlspecialchars($usernames[0] ?? '', ENT_QUOTES, 'UTF-8'));
                             $logAction = sprintf("$format on page: ", $attribute, $usernames[0]);
                         }
                     } else {
@@ -237,7 +237,7 @@
     print_html_prologue($title, $langCode);
     
     if (!empty($username) && !is_array($username)) {
-        $title .= " :: " . htmlspecialchars($username, ENT_QUOTES, 'UTF-8');
+        $title .= " :: " . htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8');
     }
 
     print_title_and_help($title, $help);

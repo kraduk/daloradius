@@ -34,7 +34,7 @@
     $username = (array_key_exists('username', $_GET) && !empty(str_replace("%", "", trim($_GET['username']))))
               ? str_replace("%", "", trim($_GET['username'])) : "";
     $username_enc = (!empty($username))
-                  ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8')
+                  ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8')
                   : "";
 
     // init logging variables
@@ -244,7 +244,7 @@
                     $records[$this_username]['enabled'] = false;
                 } else {
                     array_push($records[$this_username]['groups'],
-                               htmlspecialchars($this_groupname, ENT_QUOTES, 'UTF-8'));
+                               htmlspecialchars($this_groupname ?? '', ENT_QUOTES, 'UTF-8'));
                 }
             }
         }
@@ -319,7 +319,7 @@
         $count = 0;
         $td_format = '<td>%s</td>';
         foreach ($records as $username => $data) {
-            $username = htmlspecialchars($username, ENT_QUOTES, 'UTF-8');
+            $username = htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8');
             $type = $data['type'];
             $id = intval($data['id']);
 
@@ -348,11 +348,11 @@
             $badge = sprintf('<i class="bi bi-%s me-1" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="%s"></i>',
                              $badge_icon, strtolower($type));
 
-            $auth = htmlspecialchars($data['auth'], ENT_QUOTES, 'UTF-8');
+            $auth = htmlspecialchars($data['auth'] ?? '', ENT_QUOTES, 'UTF-8');
 
-            $fullname = htmlspecialchars($data['fullname'], ENT_QUOTES, 'UTF-8');
+            $fullname = htmlspecialchars($data['fullname'] ?? '', ENT_QUOTES, 'UTF-8');
             $lastlogin = (!empty($data['lastlogin']))
-                       ? htmlspecialchars($data['lastlogin'], ENT_QUOTES, 'UTF-8') : "(n/a)";
+                       ? htmlspecialchars($data['lastlogin'] ?? '', ENT_QUOTES, 'UTF-8') : "(n/a)";
             $grouplist = implode("<br>", $data['groups']);
 
             $ajax_id = "divContainerUserInfo_" . $count;

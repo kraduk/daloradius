@@ -37,7 +37,7 @@
     // validate this parameter before including menu
     $nasipaddress = (array_key_exists('nasipaddress', $_GET) && isset($_GET['nasipaddress']) &&
                   preg_match(LOOSE_IP_REGEX, $_GET['nasipaddress'], $m) !== false) ? $_GET['nasipaddress'] : "";
-    $nasipaddress_enc = (!empty($nasipaddress)) ? htmlspecialchars($nasipaddress, ENT_QUOTES, 'UTF-8') : "";
+    $nasipaddress_enc = (!empty($nasipaddress)) ? htmlspecialchars($nasipaddress ?? '', ENT_QUOTES, 'UTF-8') : "";
 
     $cols = array(
                     "radacctid" => t('all','ID'),
@@ -171,7 +171,7 @@
 
             // escape row elements
             for ($i = 0; $i < $rowlen; $i++) {
-                $row[$i] = htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8');
+                $row[$i] = htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8');
             }
             
             list($radAcctId, $hotspot, $username, $framedIPAddress, $acctStartTime, $acctStopTime,

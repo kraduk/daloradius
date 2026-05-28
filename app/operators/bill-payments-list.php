@@ -71,7 +71,7 @@
 
     $username = (array_key_exists('username', $_GET) && isset($_GET['username']))
               ? str_replace('%', '', $_GET['username']) : "";
-    $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+    $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
     
     // print HTML prologue    
     $title = t('Intro','paymentslist.php');
@@ -180,7 +180,7 @@
         
             // escape row elements
             for ($i = 0; $i < $rowlen; $i++) {
-                $row[$i] = htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8');
+                $row[$i] = htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8');
             }
         
             list($payment_id, $invoice_id, $amount, $date, $value, $notes) = $row;

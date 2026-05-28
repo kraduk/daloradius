@@ -99,20 +99,20 @@
 
                 // print customer info
                 printf('<div><strong>Customer</strong>: %s',
-                       htmlspecialchars($username, ENT_QUOTES, 'UTF-8'));
+                       htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8'));
 
                 if (!empty($contactperson)) {
-                     printf(' (%s)', htmlspecialchars($contactperson, ENT_QUOTES, 'UTF-8'));
+                     printf(' (%s)', htmlspecialchars($contactperson ?? '', ENT_QUOTES, 'UTF-8'));
                 }
 
                 $arr = array();
 
                 if (!empty($city)) {
-                    $arr[] = htmlspecialchars($city, ENT_QUOTES, 'UTF-8');
+                    $arr[] = htmlspecialchars($city ?? '', ENT_QUOTES, 'UTF-8');
                 }
 
                 if (!empty($state)) {
-                    $arr[] = htmlspecialchars($state, ENT_QUOTES, 'UTF-8');
+                    $arr[] = htmlspecialchars($state ?? '', ENT_QUOTES, 'UTF-8');
                 }
 
                 if (count($arr) > 0) {

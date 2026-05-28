@@ -192,7 +192,7 @@
             printf('<tr id="row-%d">', $count);
             
             for ($i = 0; $i < $rowlen; $i++) {
-                $row[$i] = htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8');
+                $row[$i] = htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8');
                 printf("<td>%s</td>", $row[$i]);
             }
             

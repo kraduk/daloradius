@@ -128,7 +128,7 @@
                   ? str_replace("%", "", trim($_REQUEST['username'])) : "";
     }
     
-    $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+    $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
     
     include_once("lang/main.php");
     include("../common/includes/layout.php");

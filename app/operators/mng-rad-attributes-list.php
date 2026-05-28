@@ -117,7 +117,7 @@
         // the partial query is built starting from user input
         // and for being passed to setupNumbering and setupLinks functions
         $partial_query_string = (!empty($vendor))
-                              ? "&vendor=" . urlencode(htmlspecialchars($vendor, ENT_QUOTES, 'UTF-8')) : "";
+                              ? "&vendor=" . urlencode(htmlspecialchars($vendor ?? '', ENT_QUOTES, 'UTF-8')) : "";
                               
         // this can be passed as form attribute and 
         // printTableFormControls function parameter
@@ -155,7 +155,7 @@
         
             // escape row elements
             for ($i = 0; $i < $rowlen; $i++) {
-                $row[$i] = htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8');
+                $row[$i] = htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8');
             }
 
             list($this_id, $this_vendor, $this_attribute) = $row;

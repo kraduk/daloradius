@@ -38,7 +38,7 @@
     $logDebugSQL = "";
 
     $planName = (array_key_exists('planName', $_POST) && !empty(trim($_POST['planName']))) ? trim($_POST['planName']) : "";
-    $planName_enc = (!empty($planName)) ? htmlspecialchars($planName, ENT_QUOTES, 'UTF-8') : "";
+    $planName_enc = (!empty($planName)) ? htmlspecialchars($planName ?? '', ENT_QUOTES, 'UTF-8') : "";
     
     $planId = (array_key_exists('planId', $_POST) && !empty(trim($_POST['planId']))) ? trim($_POST['planId']) : "";
     $planType = (array_key_exists('planType', $_POST) && !empty(trim($_POST['planType']))) ? trim($_POST['planType']) : "";

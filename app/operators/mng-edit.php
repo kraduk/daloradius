@@ -105,7 +105,7 @@
         $username = "";
     }
 
-    $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+    $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
 
     //feed the sidebar variables
     $edit_username = $username_enc;
@@ -595,7 +595,7 @@ EOF;
             while ($row = $res->fetchRow()) {
 
                 foreach ($row as $i => $v) {
-                    $row[$i] = htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8');
+                    $row[$i] = htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8');
                 }
 
                 $id = $row[5];
@@ -645,7 +645,7 @@ EOF;
             while ($row = $res->fetchRow()) {
 
                 foreach ($row as $i => $v) {
-                    $row[$i] = htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8');
+                    $row[$i] = htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8');
                 }
 
                 $id = $row[5];
@@ -738,7 +738,7 @@ EOF;
                     $id = intval($id);
 
                     $formId = sprintf("form-%d-%s", $id, $table_value);
-                    $id__attribute = sprintf("%d__%s", $id, htmlspecialchars($attribute, ENT_QUOTES, 'UTF-8'));
+                    $id__attribute = sprintf("%d__%s", $id, htmlspecialchars($attribute ?? '', ENT_QUOTES, 'UTF-8'));
 
                     printf('<form id="%s" style="display: none" method="POST" action="mng-del.php">', $formId);
                     printf('<input type="hidden" name="username" value="%s">', $username_enc);

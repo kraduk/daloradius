@@ -44,11 +44,11 @@
             
             $vendor = (array_key_exists('vendor', $_POST) && !empty(str_replace("%", "", trim($_POST['vendor']))))
                     ? str_replace("%", "", trim($_POST['vendor'])) : "";
-            $vendor_enc = (!empty($vendor)) ? htmlspecialchars($vendor, ENT_QUOTES, 'UTF-8') : "";
+            $vendor_enc = (!empty($vendor)) ? htmlspecialchars($vendor ?? '', ENT_QUOTES, 'UTF-8') : "";
 
             $attribute = (array_key_exists('attribute', $_POST) && !empty(str_replace("%", "", trim($_POST['attribute']))))
                        ? str_replace("%", "", trim($_POST['attribute'])) : "";
-            $attribute_enc = (!empty($attribute)) ? htmlspecialchars($attribute, ENT_QUOTES, 'UTF-8') : "";
+            $attribute_enc = (!empty($attribute)) ? htmlspecialchars($attribute ?? '', ENT_QUOTES, 'UTF-8') : "";
             
             $type = (array_key_exists('type', $_POST) && isset($_POST['type']) &&
                      in_array($_POST['type'], $valid_attributeTypes))

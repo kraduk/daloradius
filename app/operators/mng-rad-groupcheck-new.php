@@ -45,7 +45,7 @@
     
             $groupname = (array_key_exists('groupname', $_POST) && isset($_POST['groupname']))
                      ? trim(str_replace("%", "", $_POST['groupname'])) : "";
-            $groupname_enc = (!empty($groupname)) ? htmlspecialchars($groupname, ENT_QUOTES, 'UTF-8') : "";
+            $groupname_enc = (!empty($groupname)) ? htmlspecialchars($groupname ?? '', ENT_QUOTES, 'UTF-8') : "";
         
             if (empty($groupname)) {
                 // profile required

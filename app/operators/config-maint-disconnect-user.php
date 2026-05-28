@@ -115,7 +115,7 @@
                     // disconnect user
                     $result = user_disconnect($params);
 
-                    $username_enc = htmlspecialchars($username, ENT_QUOTES, 'UTF-8');
+                    $username_enc = htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8');
 
                     if ($result["error"]) {
                         if (!empty($failureMsg)) {

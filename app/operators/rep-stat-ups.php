@@ -53,8 +53,8 @@
         $table = array( 'title' => 'General Information', 'rows' => array() );
         foreach ($output as $line) {
             list($var, $val) = array_pad(explode(":", $line, 2), 2, "");
-            $var = htmlspecialchars($var, ENT_QUOTES, 'UTF-8');
-            $val = htmlspecialchars($val, ENT_QUOTES, 'UTF-8');
+            $var = htmlspecialchars($var ?? '', ENT_QUOTES, 'UTF-8');
+            $val = htmlspecialchars($val ?? '', ENT_QUOTES, 'UTF-8');
 
             $table['rows'][] = array( $var, $val );
         }

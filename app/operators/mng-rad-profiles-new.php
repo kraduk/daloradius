@@ -42,7 +42,7 @@
 
             $profile = (array_key_exists('profile', $_POST) && !empty(str_replace("%", "", trim($_POST['profile']))))
                      ? str_replace("%", "", trim($_POST['profile'])) : "";
-            $profile_enc = (!empty($profile)) ? htmlspecialchars($profile, ENT_QUOTES, 'UTF-8') : "";
+            $profile_enc = (!empty($profile)) ? htmlspecialchars($profile ?? '', ENT_QUOTES, 'UTF-8') : "";
 
             if (empty($profile)) {
                 // profile required

@@ -124,7 +124,7 @@
     
     
     if (!empty($planName) && !is_array($planName)) {
-        $title .= " :: " . htmlspecialchars($planName, ENT_QUOTES, 'UTF-8');
+        $title .= " :: " . htmlspecialchars($planName ?? '', ENT_QUOTES, 'UTF-8');
     }
     
 

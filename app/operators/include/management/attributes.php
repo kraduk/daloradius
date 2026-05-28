@@ -108,7 +108,7 @@ echo <<<EOF
 EOF;
 
 foreach ($vendors as $v) {
-    $v = htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
+    $v = htmlspecialchars($v ?? '', ENT_QUOTES, 'UTF-8');
     printf('<option value="%s">%s</option>', $v, $v);
 }
 

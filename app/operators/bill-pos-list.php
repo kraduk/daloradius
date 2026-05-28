@@ -78,7 +78,7 @@
               ? str_replace("%", "", $_GET['planname']) : "";
     
     $planname_enc = (!empty($planname))
-                  ? htmlspecialchars($planname, ENT_QUOTES, 'UTF-8')
+                  ? htmlspecialchars($planname ?? '', ENT_QUOTES, 'UTF-8')
                   : "";
 
     if (!empty($planname_enc)) {
@@ -201,7 +201,7 @@
         
             // escape row elements
             for ($i = 0; $i < $rowlen; $i++) {
-                $row[$i] = htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8');
+                $row[$i] = htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8');
             }
             
             list($username, $id, $value, $attribute, $contactperson, $billstatus, $planname, $company, $firstname, $disabled) = $row;

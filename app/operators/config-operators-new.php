@@ -43,7 +43,7 @@
         
             $operator_username = (array_key_exists('operator_username', $_POST) && isset($_POST['operator_username']))
                                ? trim(str_replace("%", "", $_POST['operator_username'])) : "";
-            $operator_username_enc = (!empty($operator_username)) ? htmlspecialchars($operator_username, ENT_QUOTES, 'UTF-8') : "";
+            $operator_username_enc = (!empty($operator_username)) ? htmlspecialchars($operator_username ?? '', ENT_QUOTES, 'UTF-8') : "";
             $operator_password = (array_key_exists('operator_password', $_POST) && isset($_POST['operator_password'])) ? trim($_POST['operator_password']) : "";
 
             $firstname = (array_key_exists('firstname', $_POST) && isset($_POST['firstname'])) ? trim($_POST['firstname']) : "";

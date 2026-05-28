@@ -40,11 +40,11 @@
     // declaring variables
     $username = (array_key_exists('username', $_POST) && isset($_POST['username']))
               ? trim(str_replace("%", "", $_POST['username'])) : "";
-    $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+    $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
     
     $groupname = (array_key_exists('group', $_POST) && isset($_POST['group']))
                ? trim(str_replace("%", "", $_POST['group'])) : "";
-    $groupname_enc = (!empty($groupname)) ? htmlspecialchars($groupname, ENT_QUOTES, 'UTF-8') : "";
+    $groupname_enc = (!empty($groupname)) ? htmlspecialchars($groupname ?? '', ENT_QUOTES, 'UTF-8') : "";
     
     $priority = (array_key_exists('priority', $_POST) && isset($_POST['priority']))
               ? normalize_user_group_priority($groupname, $_POST['priority'])

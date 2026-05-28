@@ -68,7 +68,7 @@
          
     $username = (array_key_exists('username', $_GET) && isset($_GET['username']))
               ? str_replace('%', '', $_GET['username']) : "";
-    $username_enc = (!empty($username)) ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8') : "";
+    $username_enc = (!empty($username)) ? htmlspecialchars($username ?? '', ENT_QUOTES, 'UTF-8') : "";
 
     $invoice_status_id = (array_key_exists('invoice_status_id', $_GET) && isset($_GET['invoice_status_id']) &&
                           preg_match('/^[0-9]+$/', $_GET['invoice_status_id']) !== false)
@@ -199,7 +199,7 @@
         
             // escape row elements
             for ($i = 0; $i < $rowlen; $i++) {
-                $row[$i] = htmlspecialchars($row[$i], ENT_QUOTES, 'UTF-8');
+                $row[$i] = htmlspecialchars($row[$i] ?? '', ENT_QUOTES, 'UTF-8');
             }
             
             list($id, $date, $status_id, $type_id, $contactperson, $username, $status, $totalpayed, $totalbilled) = $row;

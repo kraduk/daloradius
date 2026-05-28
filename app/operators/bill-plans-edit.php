@@ -61,7 +61,7 @@
         $planName = "";
     }
     
-    $planName_enc = (!empty($planName)) ? htmlspecialchars($planName, ENT_QUOTES, 'UTF-8') : "";
+    $planName_enc = (!empty($planName)) ? htmlspecialchars($planName ?? '', ENT_QUOTES, 'UTF-8') : "";
     
     //feed the sidebar variables
     $edit_planname = $planName_enc;

@@ -201,7 +201,7 @@
     print_html_prologue($title, $langCode);
 
     if (!empty($groupname)) {
-        $title .= sprintf(" %s", htmlspecialchars($groupname, ENT_QUOTES, 'UTF-8'));
+        $title .= sprintf(" %s", htmlspecialchars($groupname ?? '', ENT_QUOTES, 'UTF-8'));
     }
 
     

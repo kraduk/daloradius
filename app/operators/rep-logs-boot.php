@@ -42,7 +42,7 @@
     // Print HTML prologue
     $title = sprintf("%s &bull; lines: %d", t('Intro','replogsboot.php'), $count);
     if (!empty($filter)) {
-        $title .= sprintf(", filter: %s", htmlspecialchars($filter, ENT_QUOTES, 'UTF-8'));
+        $title .= sprintf(", filter: %s", htmlspecialchars($filter ?? '', ENT_QUOTES, 'UTF-8'));
     }
     $help = t('helpPage','replogsboot');
 
